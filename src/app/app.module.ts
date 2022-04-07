@@ -20,7 +20,7 @@ import { DirGagDirective } from './dir-gag.directive';
          DirGagDirective
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
     MaterialModule,
     BrowserAnimationsModule
   ],
