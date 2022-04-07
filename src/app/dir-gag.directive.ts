@@ -1,7 +1,7 @@
 import { Directive,ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appDirGag]'
+  selector: '[Host]'
 })
 export class DirGagDirective {
 

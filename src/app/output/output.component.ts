@@ -13,7 +13,7 @@ export class OutputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  
+    this.setDescriptionContent()
   }
   setDescriptionContent(){
     const oContent = this.aContent[0];
