@@ -1,4 +1,8 @@
-import { Type } from "@angular/core";
+import { Type, } from "@angular/core";
+var count:number = 0;
 export class ItemDescription {
-    constructor(public component:Type<any>,public data:any){}
+    count:number = count;
+    constructor(public component:Type<any>,public data:any){
+        count++;
+    }
 }

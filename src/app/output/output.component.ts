@@ -13,14 +13,16 @@ export class OutputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.setDescriptionContent()
+    this.setDescriptionContent(0)
   }
-  setDescriptionContent(){
-    const oContent = this.aContent[0];
+  setDescriptionContent(index:number){
+    const oContent = this.aContent[index];
     const refHost = this.Host.viewContainerRef;
     refHost.clear();
     const componentRef = refHost.createComponent<DescriptionComponent>(oContent.component);
     componentRef.instance.data = oContent.data;
   }
-  
+  onClickTheme(count:number){
+    this.setDescriptionContent(count);
+  }
 }

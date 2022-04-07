@@ -6,10 +6,18 @@ import { TemplateStatemantComponent } from './description/template-statemant/tem
 export class DescriptionService {
 
   constructor() { }
-  getContent (){
+  getContent() {
     return [
-      new ItemDescription( InterpolationComponent, { name:'Интерполяция'} ),
-      new ItemDescription( TemplateStatemantComponent, { name:'Шаблонные операторы'} ),
+      new ItemDescription(InterpolationComponent,
+        {
+          name: 'Интерполяция',
+          id: 'InterpolationComponent'
+        }),
+      new ItemDescription(TemplateStatemantComponent, 
+        {
+          name: 'Шаблонные операторы',
+          id: 'TemplateStatemantComponent'
+        }),
     ]
   }
 }
