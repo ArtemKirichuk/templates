@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="header">
   <button
     mat-button 
     *ngFor="let oContent of aContent"
@@ -6,9 +6,9 @@
   >
     {{ oContent.data.name }}
   </button>
-  <mat-card-footer>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </mat-card-footer>
+  <!-- <mat-card-footer>
+    <mat-progress-bar   mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer> -->
 </mat-card>
 <tr></tr>
 <ng-template Host></ng-template>

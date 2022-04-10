@@ -10,6 +10,7 @@ import { OutputComponent } from './output/output.component';
 import { DescriptionService } from './description.service';
 import { MaterialModule } from './material/material.module';
 import { DirGagDirective } from './dir-gag.directive';
+import { PipeComponent } from './pipe/pipe.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DirGagDirective } from './dir-gag.directive';
     InterpolationComponent,
     TemplateStatemantComponent,
     OutputComponent,
-         DirGagDirective
+         DirGagDirective,
+         PipeComponent
   ],
   imports: [
     BrowserModule, 

@@ -1,1 +1,34 @@
-<p>template-statemant works!</p>
+<mat-card>
+  <mat-card-title>{{ data.name }}</mat-card-title>
+  <mat-card-content>
+    <p>
+      Шаблонные операторы - это методы или свойтва HTML-элементов, которые можно
+      использовать для ответа на пользовательские события. /n как и в
+      интерполяции шаблонные операторы поддерживают язык js, но есть небольшие
+      отличия в анализаторе,а именно это присвоение(=) и цепочки операций через;
+    </p>
+    <p>
+      Операторы имеют контекст и могут ссылать только на элементы контекста.
+    </p>
+    <div>
+      <button mat-button *ngFor="let name of names" (click)="onShowName(name)">
+        Покажи {{ name }}
+      </button>
+      <p>$event</p>
+      <button mat-button *ngFor="let name of names" (click)="onEvent($event)">
+        Покажи {{ name }}
+      </button>
+      <p #ParagrphElement>Ссылка на элемент шаблона</p>
+
+      <button mat-button  (click)="onShowElement(ParagrphElement)">
+        Ссылка на элемент шаблона 
+      </button>
+    </div>
+    <p>Лучшие практики</p>
+    <ul>
+        <li>Локаничность -  используйте вызовы методов или базовые назначения свойств</li>
+        <li>Работайте в пределах контекста</li>
+        
+    </ul>
+  </mat-card-content>
+</mat-card>
