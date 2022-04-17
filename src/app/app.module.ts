@@ -10,7 +10,11 @@ import { OutputComponent } from './output/output.component';
 import { DescriptionService } from './description.service';
 import { MaterialModule } from './material/material.module';
 import { DirGagDirective } from './dir-gag.directive';
-import { PipeComponent } from './pipe/pipe.component';
+import { PipeComponent,PurePipeComponent,DirtyPipeComponent, HeroAsyncMessageComponent, HeroListComponent } from './description/pipe/pipe.component';
+import { DeclinationWordPipe, exponentialStrengthPipe, youngerPipe, dirtyYoungerPipe, FetchJsonPipe } from './Pipes.pipe';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule , HttpClient } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -19,14 +23,26 @@ import { PipeComponent } from './pipe/pipe.component';
     TemplateStatemantComponent,
     OutputComponent,
          DirGagDirective,
-         PipeComponent
+         PipeComponent,
+         exponentialStrengthPipe,
+         DeclinationWordPipe,
+         PurePipeComponent,youngerPipe, dirtyYoungerPipe,
+         DirtyPipeComponent,
+         HeroAsyncMessageComponent,
+         HeroListComponent,
+         FetchJsonPipe,
+         
+
+
   ],
   imports: [
     BrowserModule, 
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [ DescriptionService ],
+  providers: [ DescriptionService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

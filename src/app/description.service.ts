@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ItemDescription } from './item-description';
 import { InterpolationComponent } from './description/interpolation/interpolation.component';
 import { TemplateStatemantComponent } from './description/template-statemant/template-statemant.component';
+import { PipeComponent } from './description/pipe/pipe.component';
 @Injectable()
 export class DescriptionService {
 
@@ -18,6 +19,11 @@ export class DescriptionService {
           name: 'Шаблонные операторы',
           id: 'TemplateStatemantComponent'
         }),
+        new ItemDescription(PipeComponent, 
+          {
+            name: 'Pipe',
+            id: 'PipeComponent'
+          }),
     ]
   }
 }
