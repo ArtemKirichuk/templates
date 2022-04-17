@@ -3,6 +3,8 @@ import { ItemDescription } from './item-description';
 import { InterpolationComponent } from './description/interpolation/interpolation.component';
 import { TemplateStatemantComponent } from './description/template-statemant/template-statemant.component';
 import { PipeComponent } from './description/pipe/pipe.component';
+import { PropBindComponent } from './description/prop-bind/prop-bind.component';
+
 @Injectable()
 export class DescriptionService {
 
@@ -24,6 +26,11 @@ export class DescriptionService {
             name: 'Pipe',
             id: 'PipeComponent'
           }),
+          new ItemDescription(PropBindComponent, 
+            {
+              name: 'Привязка свойств',
+              id: 'PipeComponent'
+            }),
     ]
   }
 }

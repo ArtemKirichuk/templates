@@ -14,6 +14,7 @@ import { PipeComponent,PurePipeComponent,DirtyPipeComponent, HeroAsyncMessageCom
 import { DeclinationWordPipe, exponentialStrengthPipe, youngerPipe, dirtyYoungerPipe, FetchJsonPipe } from './Pipes.pipe';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule , HttpClient } from '@angular/common/http';
+import { childItemComponent, PropBindComponent } from './description/prop-bind/prop-bind.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HttpClientModule , HttpClient } from '@angular/common/http';
          HeroAsyncMessageComponent,
          HeroListComponent,
          FetchJsonPipe,
-         
+         PropBindComponent,
+         childItemComponent
 
 
   ],
