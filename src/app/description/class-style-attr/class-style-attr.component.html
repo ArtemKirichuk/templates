@@ -1,0 +1,97 @@
+<mat-card>
+  <mat-card-title>{{ data.name }}</mat-card-title>
+  <mat-card-content>
+    <p>
+      Привязка через атрибуты позволяет улучшить удобство, придать динамику
+      через стили, и управлять множеством css классов. Рекуомендуется
+      использовать привязку через свойства где это возможно в остальных случаях
+      используется привязка через птрибуты.Для примера aria и svg это чистые
+      атрибуты. Ни aria ни svg не содержит свойств.
+    </p>
+    <h1>Синтаксис</h1>
+    <p>
+      Привязка атрибутов напоминает привязку свойств с предшествующим словом
+      "attr.". Если выражение с права соответствует undefined или null то
+      Angular удаляет такие атрибуты.
+    </p>
+    <h1>Привязка ARIA атрибутов</h1>
+    <button type="button" [attr.aria-label]="actionName">
+      {{ actionName }} - это ARIA
+    </button>
+    <h1>Привязка colspan</h1>
+    <table border="1">
+      <tr>
+        <td [attr.colspan]="4">One-Two</td>
+      </tr>
+      <tr>
+        <td [attr.colspan]="1">hello</td>
+        <td [attr.colspan]="1">hello</td>
+        <td [attr.colspan]="1">hello</td>
+      </tr>
+    </table>
+    <h1>Привязка к атрибуту класса</h1>
+    <p>
+      Используйте привязку атрибута класс чтобы удалить добавить наименование
+      css класса.
+    </p>
+    <h1>Привязка одного css класса</h1>
+    <p [class.sale]="true" [class.textWhite]="true">Я подсвечивюсь красным</p>
+    <h1>Привязка множества css классов</h1>
+    <p [class]="['bgRed', 'textWhite']">Я подсвечивюсь красным</p>
+    <p [class]="{ bgRed: true, textWhite: false }">Я подсвечивюсь красным</p>
+    <p [class]="oCss">Я стилевой обхект</p>
+    <button
+      mat-button
+      (click)="oCss = { bgRed: !oCss.bgRed, textWhite: !oCss.textWhite }"
+    >
+      Реверсивный стиль объекта
+    </button>
+    <h1>Привязка к стилевым атрибутам</h1>
+    <p>Можно изменять свойства стилей добавив префикс "style."</p>
+    <p [style.background]="'red'">Тест изменения css свойства</p>
+    <p
+      [style]="'width: 100px; height: 100px; background-color: cornflowerblue;'"
+    >
+      множественная привязка css свойств
+    </p>
+    <p
+      [style]="{
+        width: '100px',
+        height: '100px',
+        backgroundColor: 'cornflowerblue'
+      }"
+    >
+      множественная привязка css свойств
+    </p>
+    <p>привязка массва к атрибуту [style] не поддерживается</p>
+    <p>
+      Директиву NgStyle можно использовать как альтернативу прямым привязкам
+      [style]. Однако предпочтительнее использовать [style]. В
+      Angular NgStyle больше не имеет существенного значения и может быть удален
+      в будущем.
+    </p>
+    <h1>Приоритет стилей</h1>
+    <p>В шаблоне</p>
+    <ul>
+        <li>[class.foo]="hasFoo"</li>
+        <li>[class]="classExpr"</li>
+        <li>class="foo"</li>
+    </ul>
+    <p>Директива host</p>
+    <ul>
+        <li>{{"host: {'[class.foo]': 'hasFoo'}"}}</li>
+        <li>{{"host: {'[class]': 'classExpr'}"}}</li>
+        <li>{{"host: host: {'class': 'foo'}"}}</li>
+    </ul>
+    <p>Компонент host</p>
+    <ul>
+        <li>{{"host: {'[class.foo]': 'hasFoo'}"}}</li>
+        <li>{{"host: {'[class]': 'classExpr'}"}}</li>
+        <li>{{"host: {'class': 'foo'}"}}</li>
+    </ul>
+    <p>Чем конкретнее привязка класса или стиля, тем выше его приоритет.</p>
+    <h1>Ввод в конструктор значения атрибута</h1>
+    <p>Используйте @Attribute(), если вы хотите внедрить значение HTML-атрибута в конструктор компонента или директив.</p>
+    <app-my-input-with-attribute-decorator type="number"></app-my-input-with-attribute-decorator>
+  </mat-card-content>
+</mat-card>

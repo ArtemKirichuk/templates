@@ -15,6 +15,7 @@ import { DeclinationWordPipe, exponentialStrengthPipe, youngerPipe, dirtyYounger
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule , HttpClient } from '@angular/common/http';
 import { childItemComponent, PropBindComponent } from './description/prop-bind/prop-bind.component';
+import { ClassStyleAttrComponent, MyInputWithAttributeDecoratorComponent } from './description/class-style-attr/class-style-attr.component';
 
 
 @NgModule({
@@ -33,8 +34,9 @@ import { childItemComponent, PropBindComponent } from './description/prop-bind/p
          HeroListComponent,
          FetchJsonPipe,
          PropBindComponent,
-         childItemComponent
-
+         childItemComponent,
+         ClassStyleAttrComponent,
+         MyInputWithAttributeDecoratorComponent
 
   ],
   imports: [
