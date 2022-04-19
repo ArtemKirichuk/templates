@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-title>{{ data.name }}</mat-card-title>
+  <mat-card-content>
+    <p>
+      Позволяет одновременно передавать и получать значения между родительским и
+      дочерним компонентами.
+    </p>
+    <h1>Синтаксис</h1>
+    <p>box in banana [()]</p>
+    <h1>Принцип работы</h1>
+    <p>
+      Свойство @Output() использует в шаблоне inputChange, где input имя свойств
+      @Input(). Например, если свойство @Input() имеет значение size, свойство
+      @Output() должно иметь значение sizeChange.
+    </p>
+    <input type="number" [(ngModel)]="number">
+    <tr></tr>
+    <app-child2waybinding [(count)]="number"></app-child2waybinding>
+  </mat-card-content>
+</mat-card>

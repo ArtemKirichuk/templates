@@ -6,6 +6,7 @@ import { PipeComponent } from './description/pipe/pipe.component';
 import { PropBindComponent } from './description/prop-bind/prop-bind.component';
 import { ClassStyleAttrComponent } from './description/class-style-attr/class-style-attr.component';
 import { EventBindingComponent } from './description/event-binding/event-binding.component';
+import { TwoWayBindingComponent } from './description/two-way-binding/two-way-binding.component';
 
 @Injectable()
 export class DescriptionService {
@@ -43,6 +44,11 @@ export class DescriptionService {
             name: 'Привязка событий',
             id: 'EventBindingComponent'
           }),
+          new ItemDescription(TwoWayBindingComponent,
+            {
+              name: 'Two way binding',
+              id: 'TwoWayBindingComponent'
+            }),
     ]
   }
 }

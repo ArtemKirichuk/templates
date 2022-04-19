@@ -19,6 +19,9 @@ import { ClassStyleAttrComponent, MyInputWithAttributeDecoratorComponent } from 
 import { EventBindingComponent } from './description/event-binding/event-binding.component';
 import { ChildEventEmmiterComponent } from './description/event-binding/child-event-emmiter/child-event-emmiter.component';
 import { MyclickDirective } from './myclick.directive';
+import { TwoWayBindingComponent } from './description/two-way-binding/two-way-binding.component';
+import { Child2waybindingComponent } from './description/two-way-binding/child2waybinding/child2waybinding.component';
+
 
 
 
@@ -43,7 +46,9 @@ import { MyclickDirective } from './myclick.directive';
          MyInputWithAttributeDecoratorComponent,
          EventBindingComponent,
          ChildEventEmmiterComponent,
-         MyclickDirective
+         MyclickDirective,
+         TwoWayBindingComponent,
+         Child2waybindingComponent
 
   ],
   imports: [
