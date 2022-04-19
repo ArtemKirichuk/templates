@@ -16,6 +16,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule , HttpClient } from '@angular/common/http';
 import { childItemComponent, PropBindComponent } from './description/prop-bind/prop-bind.component';
 import { ClassStyleAttrComponent, MyInputWithAttributeDecoratorComponent } from './description/class-style-attr/class-style-attr.component';
+import { EventBindingComponent } from './description/event-binding/event-binding.component';
+import { ChildEventEmmiterComponent } from './description/event-binding/child-event-emmiter/child-event-emmiter.component';
+import { MyclickDirective } from './myclick.directive';
+
 
 
 @NgModule({
@@ -36,7 +40,10 @@ import { ClassStyleAttrComponent, MyInputWithAttributeDecoratorComponent } from 
          PropBindComponent,
          childItemComponent,
          ClassStyleAttrComponent,
-         MyInputWithAttributeDecoratorComponent
+         MyInputWithAttributeDecoratorComponent,
+         EventBindingComponent,
+         ChildEventEmmiterComponent,
+         MyclickDirective
 
   ],
   imports: [

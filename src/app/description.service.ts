@@ -5,6 +5,7 @@ import { TemplateStatemantComponent } from './description/template-statemant/tem
 import { PipeComponent } from './description/pipe/pipe.component';
 import { PropBindComponent } from './description/prop-bind/prop-bind.component';
 import { ClassStyleAttrComponent } from './description/class-style-attr/class-style-attr.component';
+import { EventBindingComponent } from './description/event-binding/event-binding.component';
 
 @Injectable()
 export class DescriptionService {
@@ -37,6 +38,11 @@ export class DescriptionService {
           name: 'Атрибуты Классы Стили',
           id: 'ClassStyleAttrComponent'
         }),
+        new ItemDescription(EventBindingComponent,
+          {
+            name: 'Привязка событий',
+            id: 'EventBindingComponent'
+          }),
     ]
   }
 }
