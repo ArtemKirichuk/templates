@@ -21,6 +21,7 @@ import { ChildEventEmmiterComponent } from './description/event-binding/child-ev
 import { MyclickDirective } from './myclick.directive';
 import { TwoWayBindingComponent } from './description/two-way-binding/two-way-binding.component';
 import { Child2waybindingComponent } from './description/two-way-binding/child2waybinding/child2waybinding.component';
+import { TemplateVarComponent } from './description/template-var/template-var.component';
 
 
 
@@ -48,7 +49,8 @@ import { Child2waybindingComponent } from './description/two-way-binding/child2w
          ChildEventEmmiterComponent,
          MyclickDirective,
          TwoWayBindingComponent,
-         Child2waybindingComponent
+         Child2waybindingComponent,
+         TemplateVarComponent
 
   ],
   imports: [

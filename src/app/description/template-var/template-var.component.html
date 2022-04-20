@@ -1,0 +1,162 @@
+<mat-card>
+  <mat-card-title>{{ data.name }}</mat-card-title>
+  <mat-card-content>
+    <p>
+      Шаблонные переменные помогают использовать данные из одной части шаблона в
+      другой его части. Используйте шаблонные переменные как ответ на
+      пользовательский ввод или тонкой настройки форм.
+    </p>
+    <h1>Синтаксис</h1>
+    <p>Шаблоне вы используете хэш(#) символ, чтобы задекларировать элемент</p>
+    <mat-form-field>
+      <input matInput placeholder="Номер телефона" #phoneInput />
+    </mat-form-field>
+    {{ phoneInput.value }}
+  </mat-card-content>
+  <h1>Как Angular привязывает значения</h1>
+  <p>
+    Ангуляр привязывает шаблонные переменные основываясь на том, где
+    задекларирована переменная .
+  </p>
+  <ul>
+    <li>
+      Если вы объявили переменную для компонента, то переменная ссылается на
+      инстанцию компонента
+    </li>
+    <li>
+      если вы заделарировали переменную в стандартном html тэге то переменная
+      ссылается на элемент
+    </li>
+    <li>
+      если переменная задекларирована на ng-template, то она ссылается на
+      TemplateRef инстанцию, которая представляет шаблон
+    </li>
+    <li>
+      если переменная указывает на имя правой части, по типу #var="ngModel", то
+      переменная указывает на директиву или компоненту элемента который
+      совпадает с именем exportAs
+    </li>
+  </ul>
+  <h1>Использование ngForm с шаблонными переменными.</h1>
+  <p>
+    Директива ngForm применяются к тэгу form. В примере продемонстрировано
+    ссылание на разные значения деректив exportAs наименования.
+  </p>
+  <hr />
+  <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      id="name"
+      class="form-control"
+      name="name"
+      ngModel
+      required
+    />
+    <button type="submit">Submit</button>
+  </form>
+
+  <div [hidden]="!itemForm.form.valid">
+    <p>{{ submitMessage }}</p>
+  </div>
+  <p>JSON: {{ itemForm.form.value | json }}</p>
+  <hr />
+  <p>
+    Без ngForm в качестве значения атрибута, ссылка бы указывала на html элемент
+    form. C ngForm, #itemForm указывает на директиву NgForm с возможностью
+    отслеживать значения и валидацию формы.
+  </p>
+  <h1>Обычные типы ссылок без указания на дерективные значения</h1>
+  <ul>
+    <li>Native element</li>
+    <li>Component: инстанция класса компонента</li>
+    <li>Ngtemplate:TemplateRef</li>
+  </ul>
+  <p>
+    Для ссылки на элемент по его директиве необходимо, чтобы свойство exportAs
+    директивы было задано как ссылочное значение. В случае неопределенного
+    значения переменной ссылка вернет HTMLElement, даже если к элементу
+    применена одна или несколько директив.
+  </p>
+  <h1>Область применения шаблонных переменных</h1>
+  <p>
+    Структурные директивы, такие как *ngIf и *ngFor или ng-template, действуют
+    как граница шаблона. Вы не можете получить доступ к переменным шаблона за
+    пределами этих границ.
+  </p>
+  <h1>Шаблонные переменные область видимости</h1>
+  <p>
+    Сылка на шаблонную переменную доступна в пределах шаблона. структурные
+    директивы ngif ngfor ng-template действуют как границы шаблона. вы не можете
+    использовать шаблонные переменные вне этих границ.
+  </p>
+  <h1>Доступность во вложенных шаблонах</h1>
+  <p>
+    Внутри шаблона может быть доступна внешняя шаблонная ппеременная. если
+    внутри ng-template обратиться к внешней шаблонной переменной то мы получим
+    доступ к ней т.к. ng template наследует контекст родителя.
+  </p>
+  <input #ref1 type="text" [(ngModel)]="firstExample" />
+  <!-- New template -->
+  <ng-template [ngIf]="true">
+    <!-- Because the context is inherited, the value is available to the new template -->
+    <span>Value: {{ ref1.value }}</span>
+  </ng-template>
+  <hr />
+  <p>Однако доступ из вне не работает и даже не собирается</p>
+  <input *ngIf="true" #ref2 type="text" [(ngModel)]="secondExample" />
+  <!-- <span>Value: {{ ref2?.value }}</span> doesn't work -->
+  <ng-template [ngIf]="true">
+    <!-- The reference is defined within a template -->
+    <input #ref2 type="text" [(ngModel)]="secondExample" />
+  </ng-template>
+  <!-- ref2 accessed from outside that template doesn't work -->
+  <!-- <span>Value: {{ ref2?.value }}</span> -->
+  <hr />
+  <p>
+    ngFor также как с ngIf нельзя обратиться из родителя к дочерней шаблонной
+    переменной
+  </p>
+  <!-- <ng-container *ngFor="let i of [1, 2]">
+    <input #ref type="text" [value]="i" />
+  </ng-container>
+  {{ ref.value }} -->
+  <!-- <ng-template ngFor let-i [ngForOf]="[1,2]">
+    <input #ref type="text" [value]="i" />
+  </ng-template>
+  {{ ref.value }} -->
+  <h1>Доступ к шаблонным переменным в пределах ng-template</h1>
+  <p>
+    когда мы прописываем переменную в ng-template она ссылается на инстанцию
+    TemplateRef, которая представляет шаблон.
+  </p>
+  <ng-template #ref3></ng-template>
+  <button type="button" (click)="log(ref3)">ng-template = #ref</button>
+  <h1>Ввод переменных в шаблон</h1>
+  <p>
+    Template input variable - переменные указывающие в пределах инстанции
+    шаблона. вы описываете TIV(template input variable) используя let. Если это
+    опустить, оно получит свойствоконтекста шаблона.
+  </p>
+  <p>
+    В примере ниже будет несколько переменных hero, i, odd. Каждое из них
+    получает итерируемый элемент. Потомучто NgForOf связывается с $implicit
+  </p>
+  <ng-template
+    ngFor
+    #hero1
+    let-hero
+    [ngForOf]="heroes"
+    let-i="index"
+    let-odd="odd"
+  >
+    <div [class]="{ 'odd-row': odd }">{{ i }}:{{ hero.name }}</div>
+  </ng-template>
+  <p>
+    Область действия переменной ограничена одним экземпляром повторяющегося
+    шаблона. Используйте то же имя переменной снова в определении других
+    структурных директив. Когда в одном и том же шаблоне объявляются ссылочная
+    переменная шаблона и входная переменная шаблона с тем же именем, последняя
+    имеет приоритет.
+  </p>
+</mat-card>

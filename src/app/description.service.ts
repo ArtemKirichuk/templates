@@ -7,6 +7,7 @@ import { PropBindComponent } from './description/prop-bind/prop-bind.component';
 import { ClassStyleAttrComponent } from './description/class-style-attr/class-style-attr.component';
 import { EventBindingComponent } from './description/event-binding/event-binding.component';
 import { TwoWayBindingComponent } from './description/two-way-binding/two-way-binding.component';
+import { TemplateVarComponent } from './description/template-var/template-var.component';
 
 @Injectable()
 export class DescriptionService {
@@ -49,6 +50,11 @@ export class DescriptionService {
               name: 'Two way binding',
               id: 'TwoWayBindingComponent'
             }),
+            new ItemDescription(TemplateVarComponent,
+              {
+                name: 'Шаблонные переменные',
+                id: 'TemplateVarComponent'
+              }),
     ]
   }
 }
