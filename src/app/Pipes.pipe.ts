@@ -1,5 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { user } from './data';
+import { HttpClient } from '@angular/common/http';
+import { ItemDescription } from './item-description';
+
 @Pipe({
   name: 'declinationWord'
 })
@@ -36,7 +39,7 @@ export class youngerPipe implements PipeTransform {
 })
 export class dirtyYoungerPipe extends youngerPipe {}
 
-import { HttpClient } from '@angular/common/http';
+
 
 @Pipe({
   name: 'fetch',
@@ -56,5 +59,17 @@ export class FetchJsonPipe implements PipeTransform {
     }
 
     return this.cachedData;
+  }
+}
+@Pipe({
+  name: 'sortDescription'
+})
+export class sortDescriptionPipe implements PipeTransform {
+
+
+  constructor(private http: HttpClient) { }
+
+  transform(descriptionItem:ItemDescription[], type: string): any {
+    return descriptionItem.filter(item=>{ return item.type == type})
   }
 }

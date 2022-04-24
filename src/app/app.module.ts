@@ -11,7 +11,7 @@ import { DescriptionService } from './description.service';
 import { MaterialModule } from './material/material.module';
 import { DirGagDirective } from './dir-gag.directive';
 import { PipeComponent,PurePipeComponent,DirtyPipeComponent, HeroAsyncMessageComponent, HeroListComponent } from './description/pipe/pipe.component';
-import { DeclinationWordPipe, exponentialStrengthPipe, youngerPipe, dirtyYoungerPipe, FetchJsonPipe } from './Pipes.pipe';
+import { DeclinationWordPipe, exponentialStrengthPipe, youngerPipe, dirtyYoungerPipe, FetchJsonPipe, sortDescriptionPipe } from './Pipes.pipe';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule , HttpClient } from '@angular/common/http';
 import { childItemComponent, PropBindComponent } from './description/prop-bind/prop-bind.component';
@@ -22,6 +22,9 @@ import { MyclickDirective } from './myclick.directive';
 import { TwoWayBindingComponent } from './description/two-way-binding/two-way-binding.component';
 import { Child2waybindingComponent } from './description/two-way-binding/child2waybinding/child2waybinding.component';
 import { TemplateVarComponent } from './description/template-var/template-var.component';
+import { SvgComponent } from './description/svg/svg.component';
+import { BuildinDirectivComponent } from './description/buildin-directiv/buildin-directiv.component';
+import { ChildBuildingDirectiveComponent } from './description/buildin-directiv/child-building-directive/child-building-directive.component';
 
 
 
@@ -50,7 +53,11 @@ import { TemplateVarComponent } from './description/template-var/template-var.co
          MyclickDirective,
          TwoWayBindingComponent,
          Child2waybindingComponent,
-         TemplateVarComponent
+         TemplateVarComponent,
+         SvgComponent,
+         sortDescriptionPipe,
+         BuildinDirectivComponent,
+         ChildBuildingDirectiveComponent
 
   ],
   imports: [

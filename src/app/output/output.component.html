@@ -1,14 +1,21 @@
 <mat-card class="header">
+  <h1>Работа с шаблонами:</h1>
   <button
-    mat-raised-button 
-    *ngFor="let oContent of aContent"
+    mat-raised-button
+    *ngFor="let oContent of aContent | sortDescription: 'template'"
     (click)="onClickTheme(oContent.count)"
   >
     {{ oContent.data.name }}
   </button>
-  <!-- <mat-card-footer>
-    <mat-progress-bar   mode="indeterminate"></mat-progress-bar>
-  </mat-card-footer> -->
+
+  <h1>Директивы:</h1>
+  <button
+    mat-raised-button
+    *ngFor="let oContent of aContent | sortDescription: 'directive'"
+    (click)="onClickTheme(oContent.count)"
+  >
+    {{ oContent.data.name }}
+  </button>
 </mat-card>
 <tr></tr>
 <ng-template Host></ng-template>

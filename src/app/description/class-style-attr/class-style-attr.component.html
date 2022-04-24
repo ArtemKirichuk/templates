@@ -39,9 +39,9 @@
     <h1>Привязка множества css классов</h1>
     <p [class]="['bgRed', 'textWhite']">Я подсвечивюсь красным</p>
     <p [class]="{ bgRed: true, textWhite: false }">Я подсвечивюсь красным</p>
-    <p [class]="oCss">Я стилевой обхект</p>
+    <p [class]="oCss">Я стилевой объект</p>
     <button
-      mat-button
+      mat-raised-button
       (click)="oCss = { bgRed: !oCss.bgRed, textWhite: !oCss.textWhite }"
     >
       Реверсивный стиль объекта

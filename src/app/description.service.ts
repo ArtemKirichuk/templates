@@ -8,6 +8,8 @@ import { ClassStyleAttrComponent } from './description/class-style-attr/class-st
 import { EventBindingComponent } from './description/event-binding/event-binding.component';
 import { TwoWayBindingComponent } from './description/two-way-binding/two-way-binding.component';
 import { TemplateVarComponent } from './description/template-var/template-var.component';
+import { SvgComponent } from './description/svg/svg.component';
+import { BuildinDirectivComponent } from './description/buildin-directiv/buildin-directiv.component';
 
 @Injectable()
 export class DescriptionService {
@@ -19,42 +21,63 @@ export class DescriptionService {
         {
           name: 'Интерполяция',
           id: 'InterpolationComponent'
-        }),
+        },
+        'template'
+        ),
       new ItemDescription(TemplateStatemantComponent,
         {
           name: 'Шаблонные операторы',
           id: 'TemplateStatemantComponent'
-        }),
+        },
+        'template'),
       new ItemDescription(PipeComponent,
         {
           name: 'Pipe',
           id: 'PipeComponent'
-        }),
+        },
+        'template'),
       new ItemDescription(PropBindComponent,
         {
           name: 'Привязка свойств',
           id: 'PropBindComponent'
-        }),
+        },
+        'template'),
       new ItemDescription(ClassStyleAttrComponent,
         {
           name: 'Атрибуты Классы Стили',
           id: 'ClassStyleAttrComponent'
-        }),
-        new ItemDescription(EventBindingComponent,
+        },
+        'template'),
+      new ItemDescription(EventBindingComponent,
+        {
+          name: 'Привязка событий',
+          id: 'EventBindingComponent'
+        },
+        'template'),
+      new ItemDescription(TwoWayBindingComponent,
+        {
+          name: 'Two way binding',
+          id: 'TwoWayBindingComponent'
+        },
+        'template'),
+      new ItemDescription(TemplateVarComponent,
+        {
+          name: 'Шаблонные переменные',
+          id: 'TemplateVarComponent'
+        },
+        'template'),
+        new ItemDescription(SvgComponent,
           {
-            name: 'Привязка событий',
-            id: 'EventBindingComponent'
-          }),
-          new ItemDescription(TwoWayBindingComponent,
-            {
-              name: 'Two way binding',
-              id: 'TwoWayBindingComponent'
-            }),
-            new ItemDescription(TemplateVarComponent,
-              {
-                name: 'Шаблонные переменные',
-                id: 'TemplateVarComponent'
-              }),
+            name: 'SVG шаблон',
+            id: 'SvgComponent'
+          },
+          'template'),
+        new ItemDescription(BuildinDirectivComponent,
+          {
+            name: 'Встроенные директивы',
+            id: 'BuildinDirectivComponent'
+          },
+          'directive'),
     ]
   }
 }

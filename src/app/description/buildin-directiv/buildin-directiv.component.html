@@ -1,0 +1,272 @@
+<mat-card>
+  <mat-card-title>{{ data.name }}</mat-card-title>
+  <mat-card-content>
+    <p>
+      Директивы - это классы, которые добавляют дополнительное поведение
+      задекларированным элементам.Можно использовать встроенные директивы чтобы
+      управлять формами, списками, стилями и тем что видит пользователь.
+    </p>
+    <p>Директивы можно разделить на:</p>
+    <ul>
+      <li>Компоненты - используются с шаблонами самый общий тип директивы</li>
+      <li>
+        Атрибутные директивы - меняет внешний вид элемента, компонента и др.
+        директив.
+      </li>
+      <li>
+        Структурные директивы - меняет DOM элементы добавление/удаление
+        элементов
+      </li>
+    </ul>
+    <h1>встроенные Атрибутные директивы.</h1>
+    <p>
+      Атрибутные директивы прослушивают и изменяют поведение элементов, свойств
+      и компонентов.
+    </p>
+    <p>
+      Многие NgModules такие как RouterModule, FormModule определяются одной
+      атрибутной директивой. Самые общие атрибутные директивы :
+    </p>
+    <ul>
+      <li>NgClass = добавление удаление CSS классов</li>
+      <li>NgStyle - добавление/удаление стилей</li>
+      <li>NgModel - 2way binding</li>
+    </ul>
+    <h1>Добавление удаление классов стилей NgClass через ngcalss=выражение</h1>
+    <p [ngClass]="isBgRed ? 'bgRed' : ''">Фон красный</p>
+    <button (click)="isBgRed = !isBgRed">Поменять цвет фона</button>
+    <h1>Добавление удаление классов стилей NgClass через метод</h1>
+    <p [ngClass]="oCSSClasses">Изменение фона при помощи метода + объекта</p>
+    <button (click)="fnChSCCObject()">Поменять цвет фона</button>
+    <h1>Установка inline стилей при помощи директивы</h1>
+    <p [ngStyle]="oCSSStyle">Изменение фона при помощи метода + объекта</p>
+    <button (click)="fnToggleCss()">Поменять цвет фона</button>
+    <h1>Отображение и обновление свойств с ngModel</h1>
+    <p>Наименование: {{ oItem.name }}</p>
+
+    <label for="example-ngModel">[(ngModel)]:</label>
+    <input [(ngModel)]="oItem.name" id="example-ngModel" />
+    <hr />
+    <label for="example-2">Без [(ngModel)]:</label>
+    <input
+      [value]="oItem.name"
+      #input2
+      (input)="oItem.name = getValue($event)"
+      id="example-2"
+    />
+    <hr />
+    <label for="example-change">(ngModelChange)="...name=$event":</label>
+    <input
+      [ngModel]="oItem.name"
+      (ngModelChange)="oItem.name = $event.value.toUpperCase()"
+      id="example-change"
+    />
+    <p>
+      Директива NgModel работает для элемента, поддерживаемого
+      ControlValueAccessor. Angular предоставляет средства доступа к значениям
+      для всех основных элементов формы HTML
+    </p>
+    <h1>Встроенные структурные директивы</h1>
+    <p>
+      Структурные директивы отвечают за манипуляции элементами в шаблоне
+      например добавляя или удаляя их.
+    </p>
+    Структурные директивы:
+    <ul>
+      <li>NgIf- ветвление</li>
+      <li>NgFor - цикл</li>
+      <li>NgSwitch - выбор</li>
+    </ul>
+    <h1>Добавление и удаление элементов с помошью ngIf</h1>
+    <p>
+      Если NgIf имеет выражение false то элемент и все его потомки удаляются а
+      ангуляр избавляется от своих компонентов освобождая память.
+    </p>
+    <p>
+      <button
+        color="primary"
+        (click)="isShowChild = !isShowChild"
+        mat-raised-button
+      >
+        Показать/скрыть потомка
+      </button>
+    </p>
+    <app-child-building-directive
+      *ngIf="isShowChild"
+    ></app-child-building-directive>
+    <h1>Защита против null</h1>
+    <p>
+      по умолчанию ngIf предотвращает отображение при привязки Null значения.
+      испольуя ngIf вы можете защитить элемент отображений информацию
+      несуществующего объекта.
+    </p>
+    <button (click)="addUserName()" color="primary" mat-raised-button>
+      Добавить имя пользователя
+    </button>
+    <div *ngIf="oUser">Имя пользователя: {{ oUser.name }}</div>
+
+    <h1>Перебор элементов массив с ngFor</h1>
+    <p>Прослушивание ngFor, чтобы отобразить лист значений массива</p>
+    <ul>
+      <li *ngFor="let item of aItems">{{ item.name }}</li>
+    </ul>
+    <p>Строка "let item of items" даёт инструкции:</p>
+    <ul>
+      <li>
+        Хранимый каждый элемент в массиве передаётся в локальную переменную
+        'item'
+      </li>
+      <li>Сделает каждый элемент доступным для цикла</li>
+      <li>
+        использую данную конструкцию в ngtemplate переведите её вокруг основного
+        элемента
+      </li>
+      <li>повторите ngtemplate для каждого элемента в массиве</li>
+    </ul>
+
+    <h1>Повторяющиеся компоненты отображения</h1>
+    <p>Чтобы повторить шаблон дочернего компонента примените ngFor</p>
+    <app-child-building-directive
+      *ngFor="let item of aItems"
+      [name]="item.name"
+    ></app-child-building-directive>
+    <p>let item доступен 1. в пределах ngFor 2. в потомке основного элемента</p>
+    <h1>Получение хначения индекса из ngFor</h1>
+    <p>Чтобы получить доступ к индексу небходимо через ; обявить переменную.</p>
+    <div *ngFor="let item of aItems; let i = index">
+      {{ i }}: {{ item.name }}
+    </div>
+    <p>
+      как и везде итерация с 0. Angular переводит эту инструкцию в ng-template
+      вокруг основного элемента, а затем повторно использует этот шаблон для
+      создания нового набора элементов и привязок для каждого элемента в списке.
+      Дополнительные сведения о сокращении см. в руководстве по структурным
+      директивам.
+    </p>
+    <h1>Повторяющиеся элементы когда условие true</h1>
+    <p>
+      Для того, чтобы повторять элементы с условием добавть ngIf в цикл ngFor
+    </p>
+    <p>
+      Поскольку структурные директивы добавляют и удаляют узлы из DOM,
+      применяйте только одну структурную директиву для каждого элемента.
+    </p>
+    <h1>Отслеживайте элементы при помощи ngFor trackBy</h1>
+    <p>
+      Сократите количество обращений вашего приложения к серверу, отслеживая
+      изменения в списке элементов. С помощью свойства *ngFor trackBy Angular
+      может изменять и повторно отображать только те элементы, которые были
+      изменены, а не перезагружать весь список элементов.
+    </p>
+    <ul>
+      <li>
+        Добавьте метод в компонент, который возвращает значение ngFor, которое
+        должно отслеживаться. Если браузер уже отрисовал это значение angular
+        хранит это значение и не перезапрашивает сервер с этим значением.
+      </li>
+      <li>
+        в управляющем выражении устанавливается trackBy на элемент возвращаемый
+        мемтодом trackByItem()
+      </li>
+    </ul>
+    <p>Пример trackBy пример.</p>
+    <p>
+      <button (click)="fnReset()" mat-raised-button>Reset</button>
+      <button (click)="fnChIds()" mat-raised-button>Изменить id</button>
+      <button (click)="fnClearTrackByCount()" mat-raised-button>
+        Очистить
+      </button>
+      <button (click)="fnSetInfo()" mat-raised-button>Задать доп. текст</button>
+    </p>
+
+    <p>with trackBy</p>
+    <div #withTrackBy *ngFor="let item of aClItems; trackBy: fnGetId">
+      ({{ item.id }}) {{ item.name }} {{ item.info }} {{ item.oData.subName }}
+    </div>
+
+    <p>without trackBy</p>
+    <div *ngFor="let item of aClItems">
+      ({{ item.id }}) {{ item.name }} {{ item.info }} {{ item.oData.subName }}
+    </div>
+    <br />
+    <p>
+      Как по мне trackBy это отличная идея, но параметр на который завязывается
+      перерисовка элементов не имеет никакого смысла т.к. при изменении дргуого
+      параметра не привязанного к ф-ии trackBy DOM перерисовывается полностью
+    </p>
+    <h1>Основа директивы без DOM элемента</h1>
+    <p>
+      ng-container - группирует элементы, но это не интрфейс со стилями и
+      приложением, потому что Anguular не вставляет его в DOM.
+    </p>
+    <p>
+      Используйте ng-container когда нет ни одного элемента для размещения
+      директивы.
+    </p>
+    <p class="exemple">Пример:</p>
+    <p>
+      header
+      <button (click)="addUserName()" color="primary" mat-raised-button>
+        Добавить имя пользователя
+      </button>
+      <br />
+      <ng-container *ngIf="oUser"> text: {{ oUser.name }} </ng-container>
+      <br />
+      fotter
+    </p>
+    <p class="exemple">Пример условия исключающего в тегах option:</p>
+    <div>
+      Выбор пользователя (<label
+        ><input type="checkbox" checked (change)="isItaly = !isItaly" />
+        показать итальянеца</label
+      >)
+    </div>
+    <select [(ngModel)]="oItemSelected" >
+      <ng-container *ngFor="let user of aClItems">
+        <ng-container *ngIf="isItaly || user.name !== 'Antonio'">
+            //ngValue - это то что будет баблится в select ngModel
+          <option #option  [ngValue]="user">{{ user.name }}</option>
+          
+        </ng-container>
+      </ng-container>
+    </select>
+    <h1>Директива ngSwitch</h1>
+    <p>
+      ngSwitch - отображает один элемент из нескольких возможных
+      элементов.Angular вставляет только выбранный элемент в dom
+    </p>
+    <p>NgSwitch имеет древовидную струтуру</p>
+    <ul>
+      <li>NgSwitch - атрибутная директива которая изменят поведение сопутствующих директив</li>
+      <li>
+        NgSwitchCase - структурная диреткива, которая добавляет элемент в дом
+        когда привязанное значение совпадает с выбранным switch значением и
+        удаляет элемент когда равенство пропдает.
+      </li>
+      <li>
+        NgSwitchDefault - структурная директива добавляет элемент в дом когда
+        тот не выбран
+      </li>
+    </ul>
+    <p class="exemple">Пример ngSwitch:</p>
+    
+    <span *ngIf="oItemSelected" [ngSwitch]="oItemSelected.name">
+    <p *ngSwitchCase="'Antonio'">
+        {{oItemSelected.name }}: {{oItemSelected.getInfo()}}
+    </p>
+    <p *ngSwitchCase="'Катя'">
+        {{oItemSelected.name }}: {{oItemSelected.getInfo()}}
+    </p>
+    <p *ngSwitchCase="'Эдвард'">
+        {{oItemSelected.name }}: {{oItemSelected.getInfo()}}
+    </p>
+    <p *ngSwitchCase="'Петя'">
+        {{oItemSelected.name }}: {{oItemSelected.getInfo()}}
+    </p>
+    
+    <p *ngSwitchDefault>
+        Ничего не выбрано
+    </p>
+    </span>
+  </mat-card-content>
+</mat-card>

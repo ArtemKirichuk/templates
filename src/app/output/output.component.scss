@@ -1,4 +1,18 @@
-button+button{
+button {
     margin-right: 4px;
-    margin-top: 4px;
+    margin-top  : 4px;
+}
+
+h1 {
+    margin: 10px 0 10px 0;
+}
+.header{
+    background-color: #eee;
+    border          : 1px solid #ccc;
+}
+:host::ng-deep.exemple {
+
+    background-color: #eee;
+    border          : 1px solid #ccc;
+
 }
