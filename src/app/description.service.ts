@@ -10,6 +10,7 @@ import { TwoWayBindingComponent } from './description/two-way-binding/two-way-bi
 import { TemplateVarComponent } from './description/template-var/template-var.component';
 import { SvgComponent } from './description/svg/svg.component';
 import { BuildinDirectivComponent } from './description/buildin-directiv/buildin-directiv.component';
+import { AttrDirectiveComponent } from './description/attr-directive/struc-directive.component';
 import { StrucDirectiveComponent } from './description/struc-directive/struc-directive.component';
 
 @Injectable()
@@ -77,6 +78,12 @@ export class DescriptionService {
           {
             name: 'Встроенные директивы',
             id: 'BuildinDirectivComponent'
+          },
+          'directive'),
+        new ItemDescription(AttrDirectiveComponent,
+          {
+            name: 'Аттрибутные директивы',
+            id: 'AttrDirectiveComponent'
           },
           'directive'),
         new ItemDescription(StrucDirectiveComponent,

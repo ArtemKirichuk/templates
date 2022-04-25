@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StrucDirectiveComponent implements OnInit {
 @Input() data: any;
-sColor!:string;
+bCond:boolean = true;
   constructor() { }
 
   ngOnInit(): void {

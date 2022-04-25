@@ -25,8 +25,11 @@ import { TemplateVarComponent } from './description/template-var/template-var.co
 import { SvgComponent } from './description/svg/svg.component';
 import { BuildinDirectivComponent } from './description/buildin-directiv/buildin-directiv.component';
 import { ChildBuildingDirectiveComponent } from './description/buildin-directiv/child-building-directive/child-building-directive.component';
-import { StrucDirectiveComponent } from './description/struc-directive/struc-directive.component';
+import { AttrDirectiveComponent } from './description/attr-directive/struc-directive.component';
 import { HighlightDirective } from './highlight.directive';
+import { StrucDirectiveComponent } from './description/struc-directive/struc-directive.component';
+import { UnlessDirective } from './unless.directive';
+import { DependencyInjectionComponent } from './description/dependency-injection/dependency-injection.component';
 
 
 
@@ -60,8 +63,11 @@ import { HighlightDirective } from './highlight.directive';
          sortDescriptionPipe,
          BuildinDirectivComponent,
          ChildBuildingDirectiveComponent,
+         AttrDirectiveComponent,
+         HighlightDirective,
          StrucDirectiveComponent,
-         HighlightDirective
+         UnlessDirective,
+         DependencyInjectionComponent
 
   ],
   imports: [
