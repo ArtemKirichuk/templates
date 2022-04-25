@@ -12,6 +12,7 @@ import { SvgComponent } from './description/svg/svg.component';
 import { BuildinDirectivComponent } from './description/buildin-directiv/buildin-directiv.component';
 import { AttrDirectiveComponent } from './description/attr-directive/struc-directive.component';
 import { StrucDirectiveComponent } from './description/struc-directive/struc-directive.component';
+import { DependencyInjectionComponent } from './description/dependency-injection/dependency-injection.component';
 
 @Injectable()
 export class DescriptionService {
@@ -92,6 +93,12 @@ export class DescriptionService {
             id: 'StrucDirectiveComponent'
           },
           'directive'),
+        new ItemDescription(DependencyInjectionComponent,
+          {
+            name: 'Сервисы',
+            id: 'DependencyInjectionComponent'
+          },
+          'injection'),
     ]
   }
 }

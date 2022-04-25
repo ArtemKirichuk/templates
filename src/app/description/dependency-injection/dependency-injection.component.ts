@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { SupplyService } from 'src/app/supply.service';
+import { user } from 'src/app/data'; 
 @Component({
   selector: 'app-dependency-injection',
   templateUrl: './dependency-injection.component.html',
   styleUrls: ['./dependency-injection.component.scss']
 })
 export class DependencyInjectionComponent implements OnInit {
-
-  constructor() { }
-
+@Input() data: any;
+  constructor( private supplyService:SupplyService) { }
+  aData:user[] = [];
   ngOnInit(): void {
+    this.aData = this.supplyService.getData();
   }
 
 }
