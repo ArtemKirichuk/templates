@@ -31,10 +31,21 @@ import { StrucDirectiveComponent } from './description/struc-directive/struc-dir
 import { UnlessDirective } from './unless.directive';
 import { DependencyInjectionComponent } from './description/dependency-injection/dependency-injection.component';
 
+import { ProvidersModule } from './description/dependency-providers/providers/providers.module';
+
 
 
 
 @NgModule({
+  imports: [
+    BrowserModule, 
+    MaterialModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    ProvidersModule
+    
+  ],
   declarations: [
     AppComponent,
     InterpolationComponent,
@@ -67,17 +78,14 @@ import { DependencyInjectionComponent } from './description/dependency-injection
          HighlightDirective,
          StrucDirectiveComponent,
          UnlessDirective,
-         DependencyInjectionComponent
+         DependencyInjectionComponent,
+         
+         
 
   ],
-  imports: [
-    BrowserModule, 
-    MaterialModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [ DescriptionService,],
+  
+  providers: [  ],// DescriptionService
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

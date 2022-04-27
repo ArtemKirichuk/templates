@@ -4,9 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoggerService {
-
-  constructor() { }
+  logs:string[] = [];
+  me:string='LoggerService';
+  constructor() {   }
   log(data:string){
     console.log(data);
+    this.logs.push(data);
   }
 }

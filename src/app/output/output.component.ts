@@ -16,6 +16,7 @@ export class OutputComponent implements OnInit {
     this.setDescriptionContent(this.aContent.length - 1);
   }
   setDescriptionContent(index:number){
+    
     const oContent = this.aContent[index];
     const refHost = this.Host.viewContainerRef;
     refHost.clear();

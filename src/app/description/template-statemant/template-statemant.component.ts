@@ -22,7 +22,7 @@ export class TemplateStatemantComponent implements DescriptionComponent {
   onShowElement(element:any){
     window.alert((element.tagName +"backgraund = red"));
     element.style.backgroundColor = 'red';
-    debugger
+    
   }
   
 }

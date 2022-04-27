@@ -9,7 +9,7 @@ export class SupplyService {
   me = 'supply service'
   constructor(private logger: LoggerService) { }
   getData() {
-    this.logger.log(this.me + ': getData')
+    this.logger.log(`${this.me}: getData`)
     return customers
   }
 }

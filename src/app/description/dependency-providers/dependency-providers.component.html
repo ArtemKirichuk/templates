@@ -1,0 +1,100 @@
+<mat-card>
+  <mat-card-title>{{ data.name }}</mat-card-title>
+  <mat-card-content>
+    <p>
+      Настроев провайдер, вы можете создавать сервисы доступные частях
+      приложения где они необходим. Для этого необходимо создать DI token.
+    </p>
+    <h1>Токен</h1>
+    <p>
+      Если сервис класс указан как provider token, то инжектор создаёт инстанцию
+      через new. Можно сконфигурировать альтернативным способом.
+    </p>
+    <p>di token это ключ к provider'у</p>
+    <p NgNonBindable>
+      В модуле мы описываем как массив с DI т.е. provider:['DIName'], но ангуляр
+      преобразует запись в вид типа {{ "{" }} provide: DIName, useClass: DIName
+      {{ "}" }} где provide - свойство для хранения токена, useClass -
+      определяет объект provider'а, который используется для создания dependency
+      значения. Так же вместо useClass может быть useExisting, useValue или
+      useFactory для определения необходимой зависимости.
+    </p>
+    <p>
+      Конфигурируем класс провайдер с зависимостям. Если альтернативный класс
+      провайдер имеет свои зависимости укажите оба.
+    </p>
+    <p class="exemple">
+      Пример Logger. подключённый к компоненту через providers
+    </p>
+    <app-provider1></app-provider1>
+    <p class="exemple">
+      Пример Logger. подключённый к компоненту через providers в разложенном
+      формате {{ "{" }} provide: DIName, useClass: DIName
+      {{ "}" }}
+    </p>
+    <app-provider2></app-provider2>
+    <p class="exemple">
+      Пример. Один и тот же сервис могуть представлять разные классы. например
+      по токену logger вернуть BetterLogger и определяется это runTime.
+    </p>
+    <app-provider3></app-provider3>
+    <p class="exemple">
+      Пример. если альтернативный клас провайдера имеет свои зависимости, то
+      укажите его(di для альтернативного класса поставщике) тоже.
+    </p>
+    <app-provider4></app-provider4>
+    
+    <p class="exemple">Псевдонимы поставщиков</p>
+    <span
+      >Чтобы создать псевдоним поставщика класса, укажите псевдоним и поставщика
+      класса в массиве поставщиков с помощью свойства useExisting.</span
+    >
+    <br />
+    <app-provider5a></app-provider5a>
+    <br />
+    <app-provider5b></app-provider5b>
+    <p class="exemple">Пример. с параметром useValue:Object</p>
+    <app-provider6></app-provider6>
+
+    <p class="exemple">Пример. Псевдоним на интерфейс класса</p>
+    <app-AliasingParent></app-AliasingParent>
+    <p class="exemple">Пример. Внедрение Tokena c объектом конфигураций.</p>
+    <app-provider7></app-provider7>
+    <hr />
+    <p>
+      Чтобы создать изменяемый объект конфигурации используйте фабрику
+      провайдер. В следущем примере в зависимости от характеристик пользователя
+      меняется предоставляемая информация. Чтобы держать информация в
+      безопасности UserService и внешнем HeroService, дайте в конструктор
+      HeroService флаг отображения/скрытия секретных данных.
+    </p>
+    <p>
+      Фабричная функция имеет доступ к userService. Вы вводите loggerService и
+      userService в фабричный провайдер чтобы injector могу передать их
+      фабричной функции.
+    </p>
+    <p>
+      Поле useFactory указывает, что провайдер является фабричной функцией,
+      реализующий heroServiceFactory.
+    </p>
+    <p>
+      deps свойство это массив провайдер токенов. Логгер и Юзер сервисы
+      обслуживаются как токены для своего класса провайдера.Инжектор разрешает
+      эти токены и внедряет соответствующие сервисы в соответствующие параметры
+      фабричной функции heroServiceFactory.
+    </p>
+    <p>Захват провайдера фабрики в экспортируемой переменной heroServiceProvider делает поставщика фабрики многоразовым.</p>
+    <p class="exemple">Пример. Фабрика.</p>
+    
+    <p>
+      <button (click)="fnNextUser()" color="primary" mat-raised-button>
+        Сменить пользователя
+      </button>
+      <span>{{ fnUserInfo }}</span>
+    </p>
+    <app-factory *ngIf="!bAuth"></app-factory>
+    <app-factory *ngIf="bAuth"></app-factory>
+    <!-- <app-factory-list></app-factory-list> -->
+    
+  </mat-card-content>
+</mat-card>
