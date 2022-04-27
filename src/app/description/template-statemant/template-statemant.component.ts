@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DescriptionComponent } from 'src/app/description.component';
+import { DescriptionComponent } from '../../description.component';
 @Component({
   selector: 'app-template-statemant',
   templateUrl: './template-statemant.component.html',
