@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SupplyService } from 'src/app/supply.service';
-import { user } from 'src/app/data'; 
+import { SupplyService } from '../../supply.service';
+import { user } from '../../data'; 
 @Component({
   selector: 'app-dependency-injection',
   templateUrl: './dependency-injection.component.html',

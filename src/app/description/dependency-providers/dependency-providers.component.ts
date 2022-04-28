@@ -1,12 +1,12 @@
 import { Component, forwardRef, Inject, Injectable, InjectionToken, Input, OnInit, Optional, SkipSelf } from '@angular/core';
-import { DescriptionService } from 'src/app/description.service';
-import { ItemDescription } from 'src/app/item-description';
+import { DescriptionService } from '../../description.service';
+import { ItemDescription } from '../../item-description';
 
 // import { config } from 'process';
-import { LoggerService } from 'src/app/logger.service';
-import { descServiceProvider } from 'src/app/service.provider';
-import { SupplyService } from 'src/app/supply.service';
-import { UserService } from 'src/app/user.service';
+import { LoggerService } from '../../logger.service';
+import { descServiceProvider } from '../../service.provider';
+import { SupplyService } from '../../supply.service';
+import { UserService } from '../../user.service';
 const template = '{{log}}';
 @Injectable()
 export class EvenBetterLogger extends LoggerService {
@@ -220,7 +220,7 @@ export const oAppValue: ifProviderConfig = {
   name: 'Объект конфигурации',
   age: 2
 }
-// src/app/material/material.module
+// ../../material/material.module
 
 export const oInjectionToken = new InjectionToken<ifProviderConfig>('../dependency-providers.component')
 @Component({

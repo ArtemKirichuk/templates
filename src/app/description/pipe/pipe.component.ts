@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DescriptionComponent } from '../../description.component';
-import { user, customers } from 'src/app/data';
+import { user, customers } from '../../data';
 @Component({
   selector: 'app-pure-pipe',
   styleUrls: ['./pipe.component.scss'],
