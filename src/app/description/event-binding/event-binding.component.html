@@ -29,7 +29,7 @@
         из дочерней директивы через $event.
       </li>
     </ul>
-    <p>Пример:</p>
+    <p class="exemple"> :</p>
     <button (click)="fnAddUtem()" color="primary" mat-raised-button>Добавить эл-т</button>
     <tr></tr>
     <app-child-event-emmiter (delete)="fnDelete($event)" *ngFor="let item of aIds" [number]="item"></app-child-event-emmiter>

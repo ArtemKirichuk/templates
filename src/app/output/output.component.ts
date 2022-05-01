@@ -10,13 +10,15 @@ import { DescriptionComponent } from '../description.component';
 export class OutputComponent implements OnInit {
   @Input() aContent:ItemDescription[] = [];
   @ViewChild(DirGagDirective,{static: true}) Host!:DirGagDirective;
+  
+  activeContent!:ItemDescription ;
   constructor() { }
 
   ngOnInit(): void {
     this.setDescriptionContent(this.aContent.length - 1);
   }
   setDescriptionContent(index:number){
-    
+    this.activeContent = this.aContent[index];
     const oContent = this.aContent[index];
     const refHost = this.Host.viewContainerRef;
     refHost.clear();

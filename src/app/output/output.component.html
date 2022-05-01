@@ -1,29 +1,38 @@
 <mat-card class="header">
-  <h1>Работа с шаблонами:</h1>
-  <button
-    mat-raised-button
-    *ngFor="let oContent of aContent | sortDescription: 'template'"
-    (click)="onClickTheme(oContent.count)"
-  >
-    {{ oContent.data.name }}
-  </button>
+  <h3>Шаблоны</h3>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let oContent of aContent | sortDescription: 'template'"
+      (click)="onClickTheme(oContent.count)"
+      [active]="activeContent == oContent">
+      {{ oContent.data.name }}
+    </a>
+  </nav>
 
-  <h1>Директивы:</h1>
-  <button
-    mat-raised-button
-    *ngFor="let oContent of aContent | sortDescription: 'directive'"
-    (click)="onClickTheme(oContent.count)"
-  >
-    {{ oContent.data.name }}
-  </button>
-  <h1>Сервисы:</h1>
-  <button
-    mat-raised-button
-    *ngFor="let oContent of aContent | sortDescription: 'injection'"
-    (click)="onClickTheme(oContent.count)"
-  >
-    {{ oContent.data.name }}
-  </button>
+  <h3>Директивы</h3>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let oContent of aContent | sortDescription: 'directive'"
+      (click)="onClickTheme(oContent.count)"
+      [active]="activeContent == oContent">
+      {{ oContent.data.name }}
+    </a>
+  </nav>
+  <h3>Сервисы</h3>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let oContent of aContent | sortDescription: 'injection'"
+      (click)="onClickTheme(oContent.count)"
+      [active]="activeContent == oContent">
+      {{ oContent.data.name }}
+    </a>
+  </nav>
 </mat-card>
-<tr></tr>
-<ng-template Host></ng-template>
+
+<mat-tab-nav-panel #tabPanel>
+  <ng-template Host></ng-template>
+</mat-tab-nav-panel>
+
