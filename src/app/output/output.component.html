@@ -30,6 +30,16 @@
       {{ oContent.data.name }}
     </a>
   </nav>
+  <h3>Dev. Guid</h3>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let oContent of aContent | sortDescription: 'devGuid'"
+      (click)="onClickTheme(oContent.count)"
+      [active]="activeContent == oContent">
+      {{ oContent.data.name }}
+    </a>
+  </nav>
 </mat-card>
 
 <mat-tab-nav-panel #tabPanel>

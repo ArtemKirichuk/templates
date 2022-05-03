@@ -1,0 +1,137 @@
+<mat-card>
+  <mat-card-title>{{ data.name }}</mat-card-title>
+  <mat-card-content>
+    <h1>Interval</h1>
+    <p class="exemple">
+      Применение interval с оператором take-задаёт конечное число интерций
+    </p>
+    <p *ngFor="let item of aIntervalResult">{{ item }}</p>
+    <button color="primary" mat-raised-button (click)="fnStart('interval')">
+      Старт
+    </button>
+    <hr />
+    <h1>filter, map</h1>
+    <p class="exemple">
+      Filter Map операторы. Вывод пользователей чей возвраст больше 30
+    </p>
+    <mat-grid-list role="list" cols="2" rowHeight="2:1">
+      <mat-grid-tile role="listitem">
+        <h3>
+          <i>Старше 30</i>
+        </h3>
+        <p *ngFor="let item of aFromResultFilterMap">
+          {{ item.name }}: {{ item.age }}
+        </p>
+      </mat-grid-tile>
+      <mat-grid-tile role="listitem">
+        <h3>
+          <i>Все пользователи</i>
+        </h3>
+        <p *ngFor="let item of aCustomers">{{ item.name }}: {{ item.age }}</p>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <button color="primary" mat-raised-button (click)="fnStart('FilterMap')">
+      Старт
+    </button>
+    <hr />
+    <h1>Оператор scan(reduce)</h1>
+    <p class="exemple">
+      Подсумиовка возвраста пользователей ф-ей оператором scan
+    </p>
+    <mat-grid-list role="list" cols="2" rowHeight="2:1">
+      <mat-grid-tile role="listitem">
+        <h3>
+          <i>Сумарный возвраст пользователей</i>
+        </h3>
+        <p>Сумарный возвраст : {{ aFromResultScan }}</p>
+      </mat-grid-tile>
+      <mat-grid-tile role="listitem">
+        <h3>
+          <i>Все пользователи</i>
+        </h3>
+        <p *ngFor="let item of aCustomers">{{ item.name }}: {{ item.age }}</p>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <button color="primary" mat-raised-button (click)="fnStart('Scan')">
+      Старт
+    </button>
+    <h1>Stream Of/from</h1>
+    <p class="exemple">тест Of - вызывает кб для любого переданного элемента</p>
+    <pre>{{ oOfResult | json }}</pre>
+
+    <button color="primary" mat-raised-button (click)="fnStart('Of')">
+      Старт
+    </button>
+    <p class="exemple">тест From - вызывает кб для массива</p>
+    <p>{{ aFromResult | json }}</p>
+    <button color="primary" mat-raised-button (click)="fnStart('From')">
+      Старт
+    </button>
+    <hr />
+    <h1>Observable - класс для создания собственных стримов</h1>
+    <p class="exemple">Observable test next, error, complete</p>
+    <p>{{ aAny | json }}</p>
+    <button color="primary" mat-raised-button (click)="fnStart('Observable')">
+      Старт
+    </button>
+    <hr />
+    <h1>FromEvent - обработка событий</h1>
+    <p class="exemple">Обработка click через FromEvent</p>
+    <p>{{ aClientClick | json }}</p>
+    <button color="primary" mat-raised-button #btnFromEvent id="btnFromEvent">
+      Старт FromEvent
+    </button>
+    <hr />
+    <h1>Timer, unsubscribe</h1>
+    <p class="exemple">Реализация timer, остановка через unsubscribe</p>
+    <pre>{{ oTimeCustomer | json }}</pre>
+    <button color="primary" mat-raised-button (click)="fnStart('Timer')">
+      Старт
+    </button>
+    <button color="primary" mat-raised-button (click)="fnUnsubEvent()">
+      Отписаться
+    </button>
+    <hr />
+    <h1>Range</h1>
+    <p class="exemple">последовательность Range</p>
+    <pre>aNumber = {{aNumber|json}}</pre>
+    <button color="primary" mat-raised-button (click)="fnStart('Range')">
+      Старт
+    </button>
+    <hr />
+    <h1>Subject</h1>
+    <p class="exemple">Вызов Subject множественное добавление наблюдателей вне конструктора </p>
+    <p>Observe. наблюдатель активируя подписку получает весь поток из конструктора</p>
+    <mat-form-field>
+      <input matInput placeholder="Текст статьи" value="value" [(ngModel)]="sTextArtical">
+    </mat-form-field>
+    <button color="primary" mat-raised-button (click)="fnStart('SendText')">
+      Отправить текст
+    </button>
+    <button color="primary" mat-raised-button (click)="fnSubjectSubscribeNews()" >
+      {{oNewsSub && !oNewsSub.closed ?'Отписаться от новостей' :'Подписаться на новости'}}
+    </button>
+    <button color="primary" mat-raised-button (click)="fnSubjectSubscribeMagazine()" >
+      {{oMagsSub && !oMagsSub.closed ?'Отписаться от журнала':'Подписаться на журнал' }} 
+    </button>
+    <button color="warn" mat-raised-button (click)="fnToggleStream()" >
+      {{oSubIterator && !oSubIterator.closed ?'Выключить поток':'Включить поток' }} 
+    </button>
+    <mat-grid-list role="list" cols="2" rowHeight="2:1">
+      <mat-grid-tile role="listitem">
+        <h3>
+          <i>Subject</i>
+        </h3>
+        <pre>{{aSubjectResult|json}}</pre>
+      </mat-grid-tile>
+      <mat-grid-tile role="listitem">
+        <h3>
+          <i>Observable</i>
+        </h3>
+        <pre>{{aObservResult|json}}</pre>
+      </mat-grid-tile>
+    </mat-grid-list>
+    
+
+  </mat-card-content>
+</mat-card>

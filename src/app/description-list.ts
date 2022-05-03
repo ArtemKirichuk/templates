@@ -14,6 +14,7 @@ import { AttrDirectiveComponent } from './description/attr-directive/struc-direc
 import { StrucDirectiveComponent } from './description/struc-directive/struc-directive.component';
 import { DependencyInjectionComponent } from './description/dependency-injection/dependency-injection.component';
 import { DependencyProvidersComponent } from './description/dependency-providers/dependency-providers.component';
+import { DevGuidComponent } from "./description/dev-guid/dev-guid.component";
 export const aDescription: ItemDescription[] = [
     new ItemDescription(InterpolationComponent,
         {
@@ -100,4 +101,12 @@ export const aDescription: ItemDescription[] = [
             id: 'DependencyProvidersComponent'
         },
         'injection'),
+
+        new ItemDescription(DevGuidComponent ,
+            {
+                name: 'RxJS',
+                id: 'DevGuidComponent'
+            },
+            'devGuid'),
+        
 ]

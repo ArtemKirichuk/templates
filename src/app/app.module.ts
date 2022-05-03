@@ -32,6 +32,7 @@ import { UnlessDirective } from './unless.directive';
 import { DependencyInjectionComponent } from './description/dependency-injection/dependency-injection.component';
 
 import { ProvidersModule } from './description/dependency-providers/providers/providers.module';
+import { DevGuidComponent } from './description/dev-guid/dev-guid.component';
 
 
 
@@ -79,6 +80,7 @@ import { ProvidersModule } from './description/dependency-providers/providers/pr
          StrucDirectiveComponent,
          UnlessDirective,
          DependencyInjectionComponent,
+         DevGuidComponent,
          
          
 

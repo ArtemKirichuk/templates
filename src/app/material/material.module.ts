@@ -6,8 +6,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
-  exports:[MatButtonModule,MatCardModule,MatProgressBarModule,MatInputModule,MatFormFieldModule,MatTabsModule ],
-  imports: [ MatButtonModule,MatCardModule,MatProgressBarModule, MatInputModule,MatFormFieldModule,MatTabsModule ]
+  exports:[MatButtonModule,MatCardModule,MatProgressBarModule,MatInputModule,MatFormFieldModule,MatTabsModule,MatGridListModule ],
+  imports: [ MatButtonModule,MatCardModule,MatProgressBarModule, MatInputModule,MatFormFieldModule,MatTabsModule,MatGridListModule ]
 })
 export class MaterialModule { }
