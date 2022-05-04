@@ -94,54 +94,102 @@
     <hr />
     <h1>Range</h1>
     <p class="exemple">последовательность Range</p>
-    <pre>aNumber = {{aNumber|json}}</pre>
+    <pre>aNumber = {{ aNumber | json }}</pre>
     <button color="primary" mat-raised-button (click)="fnStart('Range')">
       Старт
     </button>
     <hr />
     <h1>Subject</h1>
-    <p class="exemple">Вызов Subject множественное добавление наблюдателей вне конструктора </p>
-    <p>Observe. наблюдатель активируя подписку получает весь поток из конструктора</p>
+    <p class="exemple">
+      Вызов Subject множественное добавление наблюдателей вне конструктора
+    </p>
+    <p>
+      Observe. наблюдатель активируя подписку получает весь поток из
+      конструктора
+    </p>
     <mat-form-field>
-      <input matInput placeholder="Текст статьи" value="value" [(ngModel)]="sTextArtical">
+      <input
+        matInput
+        placeholder="Текст статьи"
+        value="value"
+        [(ngModel)]="sTextArtical"
+      />
     </mat-form-field>
     <button color="primary" mat-raised-button (click)="fnStart('SendText')">
       Отправить текст
     </button>
-    <button color="primary" mat-raised-button (click)="fnSubjectSubscribeNews()" >
-      {{oNewsSub && !oNewsSub.closed ?'Отписаться от новостей' :'Подписаться на новости'}}
+    <button
+      color="primary"
+      mat-raised-button
+      (click)="fnSubjectSubscribeNews()"
+    >
+      {{
+        oNewsSub && !oNewsSub.closed
+          ? "Отписаться от новостей"
+          : "Подписаться на новости"
+      }}
     </button>
-    <button color="primary" mat-raised-button (click)="fnSubjectSubscribeMagazine()" >
-      {{oMagsSub && !oMagsSub.closed ?'Отписаться от журнала':'Подписаться на журнал' }} 
+    <button
+      color="primary"
+      mat-raised-button
+      (click)="fnSubjectSubscribeMagazine()"
+    >
+      {{
+        oMagsSub && !oMagsSub.closed
+          ? "Отписаться от журнала"
+          : "Подписаться на журнал"
+      }}
     </button>
-    <button color="warn" mat-raised-button (click)="fnToggleStream()" >
-      {{oSubIterator && !oSubIterator.closed ?'Выключить поток':'Включить поток' }} 
+    <button color="warn" mat-raised-button (click)="fnToggleStream()">
+      {{
+        oSubIterator && !oSubIterator.closed
+          ? "Выключить поток"
+          : "Включить поток"
+      }}
     </button>
     <mat-grid-list role="list" cols="2" rowHeight="2:1">
       <mat-grid-tile role="listitem">
         <h3>
           <i>Subject</i>
         </h3>
-        <pre>{{aSubjectResult|json}}</pre>
+        <pre>{{ aSubjectResult | json }}</pre>
       </mat-grid-tile>
       <mat-grid-tile role="listitem">
         <h3>
           <i>Observable</i>
         </h3>
-        <pre>{{aObservResult|json}}</pre>
+        <pre>{{ aObservResult | json }}</pre>
       </mat-grid-tile>
     </mat-grid-list>
-    <hr>
-<h1>BehavorSubject</h1>
-<p class="exemple">BehavorSubject-subject с хранимым состоянием</p>
-<p>{{aResultBehavorSubject|json}}</p>
-<button color="primary" mat-raised-button (click)="fnStart('BehavorSubject')">
-  {{oSubAuth && !oSubAuth.closed ? 'Отписаться':'Подписаться'}} на сервис авторизации пользователя
-</button>
-<button color="primary" mat-raised-button (click)="bAuth = !bAuth; fnSetAuth(bAuth)">
-  {{bAuth ? 'Выйти':'Авторизоваться'}}
-</button>
-
-<hr>
+    <hr />
+    <h1>BehavorSubject</h1>
+    <p class="exemple">BehavorSubject-subject с хранимым состоянием</p>
+    <p>{{ aResultBehavorSubject | json }}</p>
+    <button
+      color="primary"
+      mat-raised-button
+      (click)="fnStart('BehavorSubject')"
+    >
+      {{ oSubAuth && !oSubAuth.closed ? "Отписаться" : "Подписаться" }} на
+      сервис авторизации пользователя
+    </button>
+    <button
+      color="primary"
+      mat-raised-button
+      (click)="bAuth = !bAuth; fnSetAuth(bAuth)"
+    >
+      {{ bAuth ? "Выйти" : "Авторизоваться" }}
+    </button>
+    <hr />
+    <h1>ReplaySubject</h1>
+    <p class="exemple">ReplaySubject - subject в конструтор передаём кол-во желаемых последних значений</p>
+    <p>{{aResultRepSubj|json}}</p>
+    <button
+      color="primary"
+      mat-raised-button
+      (click)="fnStart('ReplaySubject')"
+    >
+      Старт ReplaySubject
+    </button>
   </mat-card-content>
 </mat-card>

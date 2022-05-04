@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DescriptionComponent } from 'src/app/description.component';
-import { of, from, interval, Observable, fromEvent, Observer, Subscription, timer, range, Subject, BehaviorSubject } from 'rxjs';
+import { of, from, interval, Observable, fromEvent, Observer, Subscription, timer, range, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { filter, map, scan, take, takeUntil } from 'rxjs/operators';
 import { customers, user } from 'src/app/data';
 // import { Stream } from 'stream';
@@ -133,10 +133,37 @@ export class DevGuidComponent implements OnInit, DescriptionComponent, OnDestroy
       case 'BehavorSubject':
         this.fnBehavorSubject()
         break
+      case 'ReplaySubject':
+        this.fnReplaySubject()
+        break
       default:
         break;
     }
   }
+  //ReplySubject/////////////////////////////////////////////////////////////////////
+  aResultRepSubj:any[]=[]
+  fnReplaySubject(){
+    let oBeSubj = new BehaviorSubject<any>(false);
+    let oRepSubj = new ReplaySubject(3);
+    let oSubj = new Subject();
+    of(1,2,3,4,5,6,7,8,11,9).subscribe((i)=>{
+      oRepSubj.next(i);
+      oSubj.next(i)
+      oBeSubj.next(i);
+    })
+    oRepSubj.subscribe((i)=>{
+      this.aResultRepSubj.push('ReplaySubject: '+i);
+      
+    })
+    oSubj.subscribe((i)=>{
+      this.aResultRepSubj.push('Subject: '+i);
+    })
+    oBeSubj.subscribe((i)=>{
+      this.aResultRepSubj.push('BehavorSubject: '+i);
+    })
+    
+  }
+  //BehavorSubject авторизация
   oBeSubject!: Observable<any>;
   aResultBehavorSubject: any[] = [];
   oSubAuth!: Subscription;
