@@ -1,11 +1,22 @@
-import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DescriptionComponent } from 'src/app/description.component';
-import { of, from, interval, Observable, fromEvent, Observer, Subscription, timer, range, Subject } from 'rxjs';
-import { filter, map, scan, take } from 'rxjs/operators';
+import { of, from, interval, Observable, fromEvent, Observer, Subscription, timer, range, Subject, BehaviorSubject } from 'rxjs';
+import { filter, map, scan, take, takeUntil } from 'rxjs/operators';
 import { customers, user } from 'src/app/data';
 // import { Stream } from 'stream';
 
+export class clAuth {
+  private oAuth$ = new BehaviorSubject<boolean>(false);
+  fnSetAuth(state: boolean) {
+    this.oAuth$.next(state);
+  }
+  getAuth() {
+    return this.oAuth$.asObservable()
+  }
+  constructor() {
 
+  }
+}
 // from
 @Component({
   selector: 'app-dev-guid',
@@ -13,7 +24,7 @@ import { customers, user } from 'src/app/data';
   styleUrls: ['./dev-guid.component.scss'],
   encapsulation: ViewEncapsulation.None //Add this line
 })
-export class DevGuidComponent implements OnInit, DescriptionComponent {
+export class DevGuidComponent implements OnInit, DescriptionComponent, OnDestroy {
   oInterval = interval(500);
   @Input() data: any;
   aIntervalResult: any[] = []//для просто ты тестов
@@ -21,12 +32,16 @@ export class DevGuidComponent implements OnInit, DescriptionComponent {
   oOfResult!: user[]
   aFromResultScan: number = 0
   aCustomers = customers.slice()
+  oDestroyStream: Subject<unknown>;
+  oClAuth!: clAuth;
   constructor() {
-
+    this.oDestroyStream = new Subject();
+    this.oClAuth = new clAuth()
   }
   fnStartInterval() {
     const oInterval$ = interval(1000);
     oInterval$.pipe(take(5)).subscribe(i => { this.aIntervalResult.push(i) });
+
   }
   fnStartFilterMap() {
     const oIntervalFilterMap$ = interval(1000);
@@ -115,14 +130,35 @@ export class DevGuidComponent implements OnInit, DescriptionComponent {
       case 'SendText':
         this.fnSendText()
         break
+      case 'BehavorSubject':
+        this.fnBehavorSubject()
+        break
       default:
         break;
     }
   }
+  oBeSubject!: Observable<any>;
+  aResultBehavorSubject: any[] = [];
+  oSubAuth!: Subscription;
+  fnBehavorSubject() {
+    this.oBeSubject = this.oClAuth.getAuth()
+    if (this.oSubAuth && !this.oSubAuth.closed) {
+      this.oSubAuth.unsubscribe()
+    }
+    else
+      this.oSubAuth = this.oBeSubject.subscribe((o) => {
+        this.aResultBehavorSubject.push('Авторизация: ' + o)
+      })
+  }
+  bAuth = false;
+  fnSetAuth(state: boolean) {
+    this.oClAuth.fnSetAuth(state);
+  }
+  //Subject Observable//////////////////////////////////////////////////////////////////
   sTextArtical: string = '';
   obSubject: Subject<unknown> = new Subject();
   obObserv: Observable<unknown> = new Observable((suber) => {
-    this.oSubIteratorObserv = interval(1000).pipe(take(10)).subscribe((i) => {
+    this.oSubIteratorObserv = interval(1000).subscribe((i) => {
       suber.next(i)
     })
   });
@@ -134,7 +170,7 @@ export class DevGuidComponent implements OnInit, DescriptionComponent {
   oNewsSubObserv!: Subscription;
 
   fnSubjectSubscribeNews() {
-    
+
     if (this.oNewsSub && !this.oNewsSub.closed) {
       this.oNewsSub.unsubscribe();
       this.oNewsSubObserv.unsubscribe()
@@ -158,13 +194,13 @@ export class DevGuidComponent implements OnInit, DescriptionComponent {
     }
   }
   fnSendText() {
-    this.obObserv.subscribe((v)=>this.aObservResult.push(`Текст: ${v}`));
+    this.obObserv.subscribe((v) => this.aObservResult.push(`Текст: ${v}`));
     this.obSubject.next(this.sTextArtical);
   }
   oSubIterator!: Subscription;
   oSubIteratorObserv!: Subscription;
   fnToggleStream() {
-    
+
     if (this.oSubIterator && !this.oSubIterator.closed) {
       this.oSubIterator.unsubscribe();
       this.oSubIteratorObserv?.unsubscribe();
@@ -175,6 +211,7 @@ export class DevGuidComponent implements OnInit, DescriptionComponent {
     }
 
   }
+  ///////////////////////////////////////////////////////////////////////////////////////////
   oTimerSubscription!: Subscription;
   oTimeCustomer!: user;
   fnTimer() {
@@ -192,6 +229,10 @@ export class DevGuidComponent implements OnInit, DescriptionComponent {
   aNumber: number[] = []
   fnRange() {
     let oRange = range(4, 10).subscribe((i) => { this.aNumber.push(i) })
+  }
+  ngOnDestroy(): void {
+    //зачистка подписок
+    this.oDestroyStream.next();
   }
   ngOnInit(): void {
 

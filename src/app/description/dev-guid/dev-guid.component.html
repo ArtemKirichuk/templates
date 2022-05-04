@@ -131,7 +131,17 @@
         <pre>{{aObservResult|json}}</pre>
       </mat-grid-tile>
     </mat-grid-list>
-    
+    <hr>
+<h1>BehavorSubject</h1>
+<p class="exemple">BehavorSubject-subject с хранимым состоянием</p>
+<p>{{aResultBehavorSubject|json}}</p>
+<button color="primary" mat-raised-button (click)="fnStart('BehavorSubject')">
+  {{oSubAuth && !oSubAuth.closed ? 'Отписаться':'Подписаться'}} на сервис авторизации пользователя
+</button>
+<button color="primary" mat-raised-button (click)="bAuth = !bAuth; fnSetAuth(bAuth)">
+  {{bAuth ? 'Выйти':'Авторизоваться'}}
+</button>
 
+<hr>
   </mat-card-content>
 </mat-card>
