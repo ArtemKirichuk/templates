@@ -1,8 +1,8 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { DescriptionComponent } from 'src/app/description.component';
+import { DescriptionComponent } from '../../description.component';
 import { of, from, interval, Observable, fromEvent, Observer, Subscription, timer, range, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { filter, map, scan, switchMap, take, takeUntil } from 'rxjs/operators';
-import { customers, user } from 'src/app/data';
+import { customers, user } from '../../data';
 // import { Stream } from 'stream';
 
 export class clAuth {
