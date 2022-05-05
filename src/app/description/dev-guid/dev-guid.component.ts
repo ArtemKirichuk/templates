@@ -3,7 +3,7 @@ import { DescriptionComponent } from '../../description.component';
 import { of, from, interval, Observable, fromEvent, Observer, Subscription, timer, range, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { filter, map, scan, switchMap, take, takeUntil } from 'rxjs/operators';
 import { customers, user } from '../../data';
-// import { Stream } from 'stream';
+// import { Stream } from 'stream'; 
 
 export class clAuth {
   private oAuth$ = new BehaviorSubject<boolean>(false);
