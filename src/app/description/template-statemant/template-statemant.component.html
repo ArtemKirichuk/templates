@@ -3,32 +3,35 @@
   <mat-card-content>
     <p>
       Шаблонные операторы - это методы или свойтва HTML-элементов, которые можно
-      использовать для ответа на пользовательские события. /n как и в
+      использовать для ответа на пользовательские события. Как и в
       интерполяции шаблонные операторы поддерживают язык js, но есть небольшие
-      отличия в анализаторе,а именно это присвоение(=) и цепочки операций через;
+      отличия в анализаторе,а именно это присвоение(=) и цепочки операций через ";"
     </p>
     <p>
       Операторы имеют контекст и могут ссылать только на элементы контекста.
     </p>
     <div>
-      <button mat-button *ngFor="let name of names" (click)="onShowName(name)">
+      <p class="exemple">Передача параметра из массива в меотд (click)</p>
+      <button color="primary" mat-raised-button *ngFor="let name of names" (click)="onShowName(name)">
         Покажи {{ name }}
       </button>
-      <p>$event</p>
-      <button mat-button *ngFor="let name of names" (click)="onEvent($event)">
+      <hr>
+      <p class="exemple">Передача системног опараметра $event в метод (click)</p>
+      <button color="primary" mat-raised-button *ngFor="let name of names" (click)="onEvent($event)">
         Покажи {{ name }}
       </button>
+      <hr>
+      <p class="exemple">Передача именнованного элемента в метод (click)</p>
       <p #ParagrphElement>Ссылка на элемент шаблона</p>
-
-      <button mat-button  (click)="onShowElement(ParagrphElement)">
+      <button color="primary" mat-raised-button (click)="onShowElement(ParagrphElement)">
         Ссылка на элемент шаблона 
       </button>
     </div>
-    <p>Лучшие практики</p>
+    <hr>
+    <h1>Best practices</h1>
     <ul>
-        <li>Локаничность -  используйте вызовы методов или базовые назначения свойств</li>
+        <li>Локаничность - используйте вызовы методов или базовые назначения свойств</li>
         <li>Работайте в пределах контекста</li>
-        
     </ul>
   </mat-card-content>
 </mat-card>

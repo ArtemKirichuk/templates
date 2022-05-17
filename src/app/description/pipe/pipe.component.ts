@@ -120,8 +120,8 @@ import { map, take } from 'rxjs/operators';
   template: `
     <h2>Title: {{sTitle}}</h2>
     <p>Message: {{ message$ | async }}</p>
-    <button type="button" (click)="resend()">Resend</button>
-    <button type="button" (click)="fnChTitle()">Изменить Title</button>`,
+    <button mat-raised-button color="primary" type="button" (click)="resend()">Resend</button>
+    <button mat-raised-button color="primary" type="button" (click)="fnChTitle()">Изменить Title</button>`,
 })
 export class HeroAsyncMessageComponent {
   message$: Observable<string>;
@@ -144,7 +144,7 @@ export class HeroAsyncMessageComponent {
   }
 
   private getResendObservable() {
-    return interval(1500).pipe( map(i => this.messages[i] + ' i=' + i),take(this.messages.length) );
+    return interval(1000).pipe( map(i => this.messages[i] + ' i=' + i),take(this.messages.length) );
   }
 }
 
