@@ -1,35 +1,86 @@
 :host::ng-deep {
-    width: 100%;
+    width  : 100%;
     display: block;
-    & mat-card:not(.header){
-        width: 1000px;
+
+    & mat-card:not(.header) {
+        // width: 1000px;
         margin: 10px auto;
         border: 1px solid #3f51b5;
     }
+
     & button {
         margin-right: 4px;
         margin-top  : 4px;
     }
+
     & .header {
-        background-color: #fff;
-        border          : 1px solid #3f51b5;
-        border-top-left-radius: 0;
+        background-color       : #fff;
+        border                 : 1px solid #3f51b5;
+        border-top-left-radius : 0;
         border-top-right-radius: 0;
     }
+
     & .exemple {
         background-color: #eee;
         border          : 1px solid #ccc;
     }
+
     &.exemple:before {
         content: 'Пример.';
     }
+
+    .mat-drawer-inner-container {
+        width: 300px;
+        
+    }
 }
+
 
 .mat-tab-nav-bar {
     margin: 0 20px;
-    height: 38px ;
-    
+    height: 38px;
+
 }
-h3{
+
+h3 {
     margin: 0;
+}
+mat-drawer{
+    position: fixed;
+}
+#details{
+    margin: 0 auto;
+    max-width:  900px;
+}
+
+.example-tree-invisible {
+    display: none;
+}
+
+.example-tree-invisible {
+    display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+    margin-top     : 0;
+    margin-bottom  : 0;
+    list-style-type: none;
+}
+
+
+/*
+   * This padding sets alignment of the nested nodes.
+   */
+.example-tree .mat-nested-tree-node div[role=group] {
+    padding-left: 30px;
+}
+
+/*
+   * Padding for leaf nodes.
+   * Leaf nodes need to have padding so as to align with other non-leaf nodes
+   * under the same parent.
+   */
+.example-tree div[role=group]>.mat-tree-node {
+    padding-left: 30px;
 }
