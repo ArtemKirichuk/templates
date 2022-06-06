@@ -32,7 +32,7 @@ import { UnlessDirective } from './unless.directive';
 import { DependencyInjectionComponent } from './description/dependency-injection/dependency-injection.component';
 
 import { ProvidersModule } from './description/dependency-providers/providers/providers.module';
-import { DevGuidComponent } from './description/dev-guid/dev-guid.component';
+import { RxJsComponent } from './description/rx-js/rx-js.component';
 
 
 
@@ -80,7 +80,7 @@ import { DevGuidComponent } from './description/dev-guid/dev-guid.component';
          StrucDirectiveComponent,
          UnlessDirective,
          DependencyInjectionComponent,
-         DevGuidComponent,
+         RxJsComponent,
          
          
 

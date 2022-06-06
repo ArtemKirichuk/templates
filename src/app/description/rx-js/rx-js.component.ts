@@ -19,12 +19,12 @@ export class clAuth {
 }
 // from
 @Component({
-  selector: 'app-dev-guid',
-  templateUrl: './dev-guid.component.html',
-  styleUrls: ['./dev-guid.component.scss'],
+  selector: 'app-rx-js',
+  templateUrl: './rx-js.component.html',
+  styleUrls: ['./rx-js.component.scss'],
   encapsulation: ViewEncapsulation.None //Add this line
 })
-export class DevGuidComponent implements OnInit, DescriptionComponent, OnDestroy {
+export class RxJsComponent implements OnInit, DescriptionComponent, OnDestroy {
   oInterval = interval(500);
   @Input() data: any;
   aIntervalResult: any[] = []//для просто ты тестов
